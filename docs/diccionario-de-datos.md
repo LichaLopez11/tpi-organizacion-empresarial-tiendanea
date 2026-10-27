@@ -4,6 +4,8 @@ Datos mínimos que necesita el módulo para saber cuánto stock hay de cada prod
 
 **Convenciones:** nombres en minúscula con guion bajo. Tipos: String, Integer, Decimal, Boolean y DateTime. PK = clave primaria, FK = clave foránea.
 
+> **Actualización (Entrega N°4):** se agregó el campo `fecha_hora_sincronizacion` a MOVIMIENTO_STOCK. Al diseñar el indicador de tiempo de sincronización se detectó que solo se registraba *si* un movimiento estaba sincronizado, pero no *cuándo*, por lo que la Meta 1 no se podía medir.
+
 ## PRODUCTO
 | Campo | Tipo de dato | Clave | Descripción funcional |
 |---|---|---|---|
@@ -50,7 +52,8 @@ Datos mínimos que necesita el módulo para saber cuánto stock hay de cada prod
 | `fecha_hora` | DateTime | — | Fecha y hora exacta en que se registró el movimiento. |
 | `id_pedido_tienda` | String | — | Número del pedido en la tienda online. Solo se completa en ventas y devoluciones. |
 | `id_autorizante` | Integer | FK | Usuario con rol GERENCIA_OPERACIONES que aprobó el movimiento. Obligatorio solo en los ajustes. |
-| `sincronizado` | Boolean | — | Indica si el cambio ya se reflejó en el stock publicado en la tienda online. (Meta 1 de la Entrega N°2). |
+| `sincronizado` | Boolean | — | Indica si el cambio ya se reflejó en el stock publicado en la tienda online. |
+| `fecha_hora_sincronizacion` | DateTime | — | Fecha y hora en que el cambio se reflejó en la tienda. Permite medir el tiempo de sincronización (Meta 1). Campo incorporado en la Parte IV. |
 
 ## Relaciones
 - PROVEEDOR 1 → N PRODUCTO
